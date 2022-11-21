@@ -1,36 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ssafy.user.model.mapper.UserMapper">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-	<resultMap type="User" id="User">
-		<result column="user_id" property="userId"/>
-		<result column="user_pwd" property="userPwd"/>
-		<result column="user_name" property="userName"/>
-		<result column="user_address" property="userAddress"/>
-		<result column="user_email" property="userEmail"/>
-	</resultMap>
+<mapper namespace="com.ssafy.sweethome.user.model.mapper.UserMapper">
 
-    <insert id="insert" parameterType="User">
+    <resultMap type="User" id="User">
+        <result column="user_id" property="userId"/>
+        <result column="user_pwd" property="userPwd"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_address" property="userAddress"/>
+        <result column="user_email" property="userEmail"/>
+        <result column="type" property="type"/>
+        <result column="join_date" property="joinDate"/>
+        <result column="origin_profile_img_name" property="originProfileImgName"/>
+    </resultMap>
+
+
+    <insert id="insertUser" parameterType="User">
         INSERT INTO user(user_id, user_pwd, user_name, user_address, user_email)
         VALUES(#{userId}, #{userPwd}, #{userName}, #{userAddress}, #{userEmail})
     </insert>
 
-    <select id="searchById" parameterType="String" resultMap="User">
-        SELECT user_id, user_pwd, user_name, user_address, user_email
+
+    <select id="selectUser" parameterType="User" resultMap="User">
+        SELECT user_id, user_pwd, type
         FROM user
         WHERE user_id = #{userId}
     </select>
-    
-    <select id="searchUser" parameterType="String" resultMap="User">
-        SELECT user_id, user_pwd, user_name, user_address, user_email
+
+
+    <update id="updateUser" parameterType="User">
+        UPDATE user
+        SET user_name = #{userName}, user_address = #{userAddress}, user_email = #{userEmail}
+        WHERE user_id = #{userId}
+    </update>
+
+
+    <update id="updateUserPassword" parameterType="User">
+        UPDATE user
+        SET user_pwd = #{userPwd}
+        WHERE user_id = #{userId}
+    </update>
+
+
+    <delete id="deleteUser" parameterType="User">
+        DELETE FROM user
+        WHERE user_id = #{userId}
+    </delete>
+
+
+    <select id="selectUserById" parameterType="string" resultMap="User">
+        SELECT user_id, user_name, user_address, user_email, join_date
         FROM user
-        WHERE user_id = #{userId} AND user_pwd = #{userPwd}
+        WHERE user_id = #{userId}
     </select>
 
-    <select id="search" parameterType="User" resultMap="User">
-        SELECT user_id, user_name, user_address, user_email
+
+    <select id="selectUserIdByNameAndEmail" parameterType="User" resultType="string">
+        SELECT user_id
+        FROM user
+        WHERE user_name = #{userName} AND user_email = #{userEmail}
+    </select>
+
+
+    <select id="selectUserList" resultMap="User">
+        SELECT user_id, user_name, user_address, user_email, type, join_date
+        FROM user
+    </select>
+
+
+    <select id="selectUserListByCondition" parameterType="User" resultMap="User">
+        SELECT user_id, user_name, user_address, user_email, type, join_date
         FROM user
         WHERE user_id = #{userId}
             OR user_name = #{userName}
@@ -38,22 +78,25 @@
             OR user_email = #{userEmail}
     </select>
 
-    <update id="update" parameterType="User">
-        UPDATE USER
-        SET user_pwd = #{userPwd},
-            user_name = #{userName},
-            user_address = #{userAddress},
-            user_email = #{userEmail}
+
+    <update id="saveRefreshToken" parameterType="map">
+        UPDATE user
+        SET token = #{token}
         WHERE user_id = #{userId}
     </update>
 
-    <delete id="delete" parameterType="String">
-        DELETE FROM user
-        WHERE user_id = #{userId}
-    </delete>
 
-    <select id="selectAll" resultMap="User">
-        SELECT user_id, user_pwd, user_name, user_address, user_email
+    <select id="getRefreshToken" parameterType="string" resultType="string">
+        SELECT token
         FROM user
+        WHERE user_id = #{userId}
     </select>
+
+
+    <update id="deleteRefreshToken" parameterType="map">
+        UPDATE user
+        SET token = #{token, jdbcType=VARCHAR}
+        WHERE user_id = #{userId}
+    </update>
+
 </mapper>

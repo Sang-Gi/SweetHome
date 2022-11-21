@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.sweethome.favorite_region.model.mapper.FavoriteRegionMapper">
+
+    <resultMap type="FavoriteRegion" id="FavoriteRegion">
+        <result column="dongCode" property="dongCode"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+
+    <select id="selectFavoriteRegionList" parameterType="string" resultMap="FavoriteRegion">
+        SELECT dongCode
+        FROM favoriteregion
+        WHERE user_id = #{userId}
+    </select>
+
+
+    <insert id="insertFavoriteRegion" parameterType="FavoriteRegion">
+        INSERT INTO favoriteregion(dongCode, user_id)
+        VALUES(#{dongCode}, #{userId})
+    </insert>
+
+
+    <delete id="deleteFavoriteRegion" parameterType="FavoriteRegion">
+        DELETE FROM favoriteregion
+        WHERE dongCode = #{dongCode} AND user_id = #{userId}
+    </delete>
+
+</mapper>

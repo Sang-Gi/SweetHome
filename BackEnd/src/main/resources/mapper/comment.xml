@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.sweethome.comment.model.mapper.CommentMapper">
+
+    <resultMap type="Comment" id="Comment">
+        <result column="comment_id" property="commentId"/>
+        <result column="article_no" property="articleNo"/>
+        <result column="user_id" property="userId"/>
+        <result column="content" property="content"/>
+        <result column="reg_time" property="regTime"/>
+    </resultMap>
+
+
+    <select id="selectCommentList" parameterType="int" resultMap="Comment">
+        SELECT comment_id, user_id, content, reg_time
+        FROM comment
+        WHERE article_no = ${articleNo}
+    </select>
+
+
+    <insert id="insertComment" parameterType="Comment">
+        INSERT INTO comment(article_no, user_id, content)
+        VALUES(${articleNo}, #{userId}, #{content})
+    </insert>
+
+
+    <update id="updateComment" parameterType="Comment">
+        UPDATE comment
+        SET content = #{content}
+        WHERE comment_id = ${commentId}
+    </update>
+
+
+    <delete id="deleteComment" parameterType="int">
+        DELETE FROM comment
+        WHERE comment_id = ${commentId}
+    </delete>
+
+</mapper>

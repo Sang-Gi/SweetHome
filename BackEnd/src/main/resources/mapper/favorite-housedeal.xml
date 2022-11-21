@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.sweethome.favorite_housedeal.model.mapper.FavoriteHousedealMapper">
+
+    <resultMap type="FavoriteHousedeal" id="FavoriteHousedeal">
+        <result column="housedeal_no" property="housedealNo"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+
+    <select id="selectFavoriteHousedealList" parameterType="string" resultMap="FavoriteHousedeal">
+        SELECT housedeal_no
+        FROM favoritehousedeal
+        WHERE user_id = #{userId}
+    </select>
+
+
+    <insert id="insertFavoriteHousedeal" parameterType="FavoriteHousedeal">
+        INSERT INTO favoritehousedeal(housedeal_no, user_id)
+        VALUES(CONVERT(#{housedealNo}, unsigned), #{userId})
+    </insert>
+
+
+    <delete id="deleteFavoriteHousedeal" parameterType="FavoriteHousedeal">
+        DELETE FROM favoritehousedeal
+        WHERE housedeal_no = CONVERT(#{housedealNo}, unsigned) AND user_id = #{userId}
+    </delete>
+
+</mapper>

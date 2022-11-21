@@ -1,25 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ssafy.house.model.mapper.HouseMapper">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-	<resultMap type="House" id="House">
-		<result column="aptName" property="aptName"/>
-		<result column="floor" property="floor"/>
-		<result column="area" property="area"/>
-		<result column="dealAmount" property="dealAmount"/>
-		<result column="dealYear" property="dealYear"/>
-		<result column="sidoName" property="sidoName"/>
-		<result column="gugunName" property="gugunName"/>
-		<result column="dongName" property="dongName"/>
-	</resultMap>
+<mapper namespace="com.ssafy.sweethome.house.model.mapper.HouseMapper">
 
-    <select id="selectHouseList" parameterType="House" resultType="House">
-        SELECT aptName, buildYear, jibun, floor, area, dealAmount, dealYear, dealMonth, sidoName, gugunName, dongName, dongCode, lng, lat
-        FROM house
-		WHERE (sidoName = #{sidoName} AND gugunName = #{gugunName} AND dongName = #{dongName} AND dealYear = ${dealYear}) 
-			OR (aptName = #{aptName}) LIMIT 20
-		
-    </select>
+
 </mapper>
