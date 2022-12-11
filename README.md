@@ -1,5 +1,7 @@
 # SweetHome 🏡
 
+### 여러분의 집을 찾아보세요
+
 ## 💡 프로젝트 개요
 
 - 삼성청년SW아카데미 - 1학기 HappyHouse 관통 프로젝트(2022 상반기)
@@ -15,6 +17,7 @@
 <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white">
 <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white">
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+</br>
 <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
 <img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white">
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
@@ -41,11 +44,13 @@
 ## 🖥 기능
 
 > - 회원관리
+>
 >   - 회원가입
 >   - 로그인
 >   - 비밀번호 찾기
 >   - 마이페이지
 >   - 회원 정보 수정
+>
 > - 아파트 검색
 >
 >   - 검색화면
@@ -53,12 +58,15 @@
 >
 > - 추가 정보 제공
 >
->   - 해당 매물 카카오 로드맵 제공
+>   - 해당 매물 주변 로드맵 제공
+>   - 부동산 관련 뉴스 및 영상 제공
 >
 > - 공지사항
+>
 >   - 공지사항 목록
 >   - 공지사항 상세 정보
 >   - 등록 & 수정 & 삭제
+>
 > - QnA 게시판
 >   - QnA 목록
 >   - 상세정보 및 답변 등록
