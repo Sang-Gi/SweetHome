@@ -44,6 +44,18 @@
 ## 🖥 기능 & API 명세서
 ![2](https://user-images.githubusercontent.com/69615320/207243159-4f59bd9d-1fd0-43af-a54a-0f5137a86654.jpg)
 
+## 🖥 ERD
+![ERD](https://user-images.githubusercontent.com/69615320/222312297-88ffcd3b-d97f-4a17-946c-cf9828cea8f4.PNG)
+
+## 💫 뷰
+### 메인 페이지
+![main_page](https://user-images.githubusercontent.com/69615320/222312152-e12233cb-985d-4e98-81f5-bd8054ff6818.PNG)
+### 실시간 아파트 매물 조회
+![apt_page](https://user-images.githubusercontent.com/69615320/222312490-d0e0a6a8-3b54-4d5f-9703-326e2dc9a9ac.PNG)
+### Q&A게시판
+![board_page](https://user-images.githubusercontent.com/69615320/222312564-d1476495-9609-4d89-ba0c-6bbf087b345c.PNG)
+
+
 > - 회원관리
 >
 >   - 회원가입
